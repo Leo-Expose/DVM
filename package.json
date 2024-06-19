@@ -1,0 +1,18 @@
+// It was supposed to be DVM as the name, but I forgot to change it before doing the npm install and now it's fixed forever
+{
+    "name": "voting-poll-app",
+    "version": "1.0.0",
+    "description": "A simple voting poll application",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "ejs": "^3.1.10",
+        "express": "^4.19.2",
+        "express-session": "^1.18.0"
+    },
+    "author": "Your Name",
+    "license": "ISC"
+}
