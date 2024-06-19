@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invalid Credentials</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8d7da;
+      color: #721c24;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Invalid credentials. Please try again.</h1>
+  <p>You will be redirected to the login page in 2 seconds...</p>
+  <script>
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, 2000);
+  </script>
+</body>
+</html>

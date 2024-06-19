@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vote Successful</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #d4edda;
+      color: #155724;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Successfully voted!</h1>
+  <p>You will be redirected to the login page in 3 seconds...</p>
+  <script>
+    setTimeout(() => {
+      window.location.href = "/login";
+    }, 3000);
+  </script>
+</body>
+</html>
