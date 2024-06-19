@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vote for Head Boy</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <div class="vote-container">
+    <h1>Vote for Head Boy</h1>
+    <form action="/vote/headBoy" method="POST">
+      <div class="grid-container">
+        <% candidates.forEach(candidate => { %>
+          <div class="grid-item">
+            <img src="/images/<%= candidate.photo %>" alt="<%= candidate.name %>">
+            <p><%= candidate.name %></p>
+            <p><%= candidate.class %></p>
+            <label>
+              <input type="radio" name="candidate" value="<%= candidate.name %>" required>
+              Select
+            </label>
+          </div>
+        <% }) %>
+      </div>
+      <button type="submit" class="vote-button">Vote</button>
+    </form>
+  </div>
+</body>
+</html>
