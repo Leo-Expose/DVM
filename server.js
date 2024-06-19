@@ -1,3 +1,7 @@
+// starting comment 
+// code by leo
+// i accept payment in all forms
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
@@ -7,7 +11,7 @@ const session = require('express-session');
 const app = express();
 const port = 7000;
 
-// Middleware
+// necessary comment
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'resources')));
 app.set('view engine', 'html');
@@ -60,7 +64,7 @@ const logVote = (user, type, candidate) => {
   }
 };
 
-// Load voters
+// DB loading & checking bcoz errors are everywhere in life
 let voters = [];
 const votersFilePath = path.join(__dirname, 'Voters.csv');
 
@@ -74,7 +78,7 @@ const loadVoters = () => {
   }
 };
 
-// Check if voter exists
+// voter validation
 const isValidVoter = (name, admissionNumber) => {
   return voters.some(voter => 
     voter.name.toLowerCase() === name.trim().toLowerCase() && 
@@ -82,7 +86,7 @@ const isValidVoter = (name, admissionNumber) => {
   );
 };
 
-// Generate candidates
+// candidate naming
 const headBoys = [
   { name: "Abdul Hazim", photo: "headboy1.png", class: "Class X" },
   { name: "Neil Binoy", photo: "headboy2.png", class: "Class X" },
@@ -111,7 +115,7 @@ const generalCaptains = [
   { name: "Obama Unknown", photo: "gencap11.png", class: "Class XII" }
 ];
 
-// Routes
+// webpage redirection
 app.get('/', (req, res) => {
   res.redirect('/login');
 });
@@ -128,7 +132,7 @@ app.post('/login', (req, res) => {
     res.redirect('/headBoy');
   } else {
     console.log(`Invalid Login Attempt: ${name}, ${admissionNumber}`);
-    res.send('<h1>Invalid credentials. Please try again.</h1><script>setTimeout(() => { window.location.href = "/login" }, 3000)</script>');
+    res.render('invalid.html');
   }
 });
 
@@ -165,7 +169,7 @@ app.post('/vote/generalCaptain', (req, res) => {
   const user = req.session.user;
   saveVote('generalCaptain', candidate);
   logVote(user, 'generalCaptain', candidate);
-  res.send('<h1>Successfully voted!</h1><script>setTimeout(() => { window.location.href = "/login" }, 3000)</script>');
+  res.render('success.html');
 });
 
 app.get('/admin', (req, res) => {
@@ -184,10 +188,12 @@ app.post('/admin/pause', (req, res) => {
   res.send('Voting paused!');
 });
 
-// Load initial data
+// Load data for no reason but code will die if this is not there
+// blame stackoverflow
 loadVotes();
 loadVoters();
 
-app.listen(port, () => {
-  console.log(`Voting app listening at http://localhost:${port}`);
+// update 3, running on local network
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Voting app listening at http://0.0.0.0:${port}`);
 });
